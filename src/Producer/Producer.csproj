@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3"/>
+    <PackageReference Include="NSwag.MSBuild" Version="13.13.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  <Target Name="NSwag" AfterTargets="PostBuildEvent">
+    <Message Importance="High" Text="$(NSwagExe_Net50) run nswag.json /variables:CSharpOutputPath=../../lib"/>
+    <Exec WorkingDirectory="$(ProjectDir)" Command="$(NSwagExe_Net50) run nswag.json /variables:CSharpOutputPath=../../lib"/>
+    <Delete Files="$(ProjectDir)\obj\$(MSBuildProjectFile).NSwag.targets"/>
+  </Target>
+</Project>
