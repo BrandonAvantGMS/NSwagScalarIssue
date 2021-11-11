@@ -10,7 +10,7 @@ namespace Consumer
         {
             ProducerApiClient api = new ProducerApiClient("http://localhost:5000", new System.Net.Http.HttpClient());
 
-            var result = await api.WeatherforecastAsync();
+            var result = await api.WeatherForecast_GetAsync();
 
             Console.WriteLine(result);
         }

@@ -14,11 +14,10 @@
 
 namespace Producer.ApiClient
 {
-    using Consumer;
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.13.2.0 (NJsonSchema v10.5.2.0 (Newtonsoft.Json v12.0.0.0))")]
-    public partial class ProducerApiClient : NSwagClientBase
+    public partial class ProducerApiClient 
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -53,14 +52,14 @@ namespace Producer.ApiClient
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
         /// <exception cref="ProducerApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<string> WeatherforecastAsync()
+        public System.Threading.Tasks.Task<string> WeatherForecast_GetAsync()
         {
-            return WeatherforecastAsync(System.Threading.CancellationToken.None);
+            return WeatherForecast_GetAsync(System.Threading.CancellationToken.None);
         }
     
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ProducerApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<string> WeatherforecastAsync(System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<string> WeatherForecast_GetAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/WeatherForecast");
@@ -69,7 +68,7 @@ namespace Producer.ApiClient
             var disposeClient_ = false;
             try
             {
-                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
